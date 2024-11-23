@@ -9,6 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
+        repository: 'divVerent/aaaaxy'
         submodules: true
 
     - name: Install Dependencies
