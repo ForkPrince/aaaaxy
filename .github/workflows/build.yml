@@ -1,0 +1,35 @@
+name: Build Game
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows-amd64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Install Dependencies
+      run: 'sudo apt-get update && sudo apt-get -y install libasound2-dev libgl-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev'
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22'
+
+    - name: Build
+      run: 'make'
+      env:
+        AAAAXY_BUILD_USE_VERSION_FILE: true
+        GOARCH: arm64
+        GOOS: windows
+
+    - name: Archive Binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: aaaaxy-debug-windows-amd64
+        path: |
+          aaaaxy.exe
+          assets/generated/
