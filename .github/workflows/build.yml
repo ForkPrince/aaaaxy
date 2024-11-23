@@ -33,5 +33,5 @@ jobs:
         name: aaaaxy-debug-windows-arm64
         path: |
           aaaaxy.exe
-          assets/generated/
+          assets
           third_party
