@@ -23,14 +23,13 @@ jobs:
     - name: Build
       run: 'make'
       env:
-        AAAAXY_BUILD_USE_VERSION_FILE: true
         GOARCH: arm64
         GOOS: windows
 
     - name: Archive Binary
       uses: actions/upload-artifact@v4
       with:
-        name: aaaaxy-debug-windows-amd64
+        name: aaaaxy-debug-windows-arm64
         path: |
           aaaaxy.exe
           assets/generated/
