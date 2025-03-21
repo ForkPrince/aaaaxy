@@ -23,6 +23,7 @@ jobs:
     - name: Build
       run: 'make'
       env:
+        convert: magick convert
         AAAAXY_BUILD_USE_VERSION_FILE: true
         GOARCH: arm64
         GOOS: windows
